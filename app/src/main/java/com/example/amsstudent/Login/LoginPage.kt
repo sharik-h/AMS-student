@@ -14,11 +14,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.amsstudent.Navigation.Screen
 import com.example.amsstudent.R
 
-@Preview(showBackground = true)
 @Composable
-fun LoginPage() {
+fun LoginPage(navController: NavHostController) {
     var regNo by remember { mutableStateOf("") }
     var className by remember { mutableStateOf("") }
 
@@ -88,7 +89,11 @@ fun LoginPage() {
                 horizontalArrangement = Arrangement.Center
             ) {
                 Button(
-                    onClick = {},
+                    onClick = {
+                        if (regNo.length != 0 && className.length != 0){
+                            navController.navigate(route = Screen.Authentication.route)
+                        }
+                    },
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Blue),
                     modifier = Modifier.fillMaxWidth()
                 ) {

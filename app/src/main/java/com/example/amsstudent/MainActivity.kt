@@ -3,26 +3,15 @@ package com.example.amsstudent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.ui.Modifier
-import com.example.amsstudent.Login.LoginPage
-import com.example.amsstudent.ui.theme.AMSStudentTheme
+import androidx.navigation.compose.rememberNavController
+import com.example.amsstudent.Navigation.NavGraph
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            AMSStudentTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    LoginPage()
-                }
-            }
+            val navController = rememberNavController()
+            NavGraph(navController = navController)
         }
     }
 }
